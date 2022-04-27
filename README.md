@@ -17,6 +17,9 @@ Create this files in `<repo_root>/.github/workflows` directory.
 # on_push.yml
 name: Test
 
+on:
+  push: {}
+
 jobs:
   tests:
     uses: coinlist/github_actions/.github/workflows/ruby_on_push.yml@main
@@ -27,6 +30,9 @@ jobs:
 ```yaml
 # on_release.yml
 name: Release
+
+on:
+  release: {}
 
 jobs:
   release:
