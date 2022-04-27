@@ -19,6 +19,7 @@ name: Test
 
 on:
   push: {}
+  workflow_dispatch: {}
 
 jobs:
   tests:

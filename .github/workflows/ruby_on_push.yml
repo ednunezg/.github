@@ -7,6 +7,11 @@ on:
   workflow_call:
     inputs:
       image:
+        description: Image name
+        type: string
+        required: true
+      tag:
+        description: Image tag
         type: string
         required: true
 
@@ -23,7 +28,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: false
-          tags: coinlist/${{ inputs.image }}:latest
+          tags: coinlist/${{ inputs.image }}:${{ inputs.tag }}
       - name: Run tests
         run: |
-          docker exec -t coinlist/${{ inputs.image }}:latest make test
+          docker exec -t coinlist/${{ inputs.image }}:${{ inputs.tag }} make test

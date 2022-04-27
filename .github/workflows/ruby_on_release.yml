@@ -7,6 +7,11 @@ on:
   workflow_call:
     inputs:
       image:
+        description: Image name
+        type: string
+        required: true
+      tag:
+        description: Image tag
         type: string
         required: true
 
@@ -38,8 +43,8 @@ jobs:
           password: ${{ steps.ecr-password.outputs.password }}
           registry: ${{ steps.ecr-login.outputs.registry }}
           repository: ${{ inputs.image }}
+          tags: coinlist/${{ inputs.image }}:${{ inputs.tag }}
           add_git_labels: true
-          tag_with_ref: true
           push: true
       - name: Logout from Amazon ECR
         if: always()
