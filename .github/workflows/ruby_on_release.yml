@@ -1,7 +1,4 @@
 name: Release
-concurrency:
-  group: on_release
-  cancel-in-progress: true
 
 on:
   workflow_call:
