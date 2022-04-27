@@ -25,7 +25,8 @@ jobs:
   tests:
     uses: coinlist/github_actions/.github/workflows/ruby_on_push.yml@main
     with:
-      image: ${{ github.repository }}
+      image: ${{ github.event.repository.name }}
+      tag: ${{ github.sha }}
 ```
 
 ```yaml
@@ -39,5 +40,6 @@ jobs:
   release:
     uses: coinlist/github_actions/.github/workflows/ruby_on_release.yml@main
     with:
-      image: ${{ github.repository }}
+      image: ${{ github.event.repository.name }}
+      tag: latest
 ```
