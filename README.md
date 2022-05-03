@@ -6,8 +6,8 @@ A collection of GitHubActions that can be referenced in other GitHub repositorie
 
 ### Ruby
 
-- [ruby_on_push](./.github/workflows/ruby_on_push.yml) - Install Ruby project and run tests
-- [ruby_on_release](./.github/workflows/ruby_on_release.yml) - Bump version and deploy Ruby project on release
+- [docker_on_push](./.github/workflows/docker_on_push.yml) - Install Docker project and run tests
+- [docker_on_release](./.github/workflows/docker_on_release.yml) - Bump version and deploy Docker project on release
 
 ## Usage
 
@@ -23,7 +23,7 @@ on:
 
 jobs:
   tests:
-    uses: coinlist/github_actions/.github/workflows/ruby_on_push.yml@main
+    uses: coinlist/.github/.github/workflows/ruby_on_push.yml@main
     with:
       image: ${{ github.event.repository.name }}
       tag: ${{ github.sha }}
@@ -38,7 +38,7 @@ on:
 
 jobs:
   release:
-    uses: coinlist/github_actions/.github/workflows/ruby_on_release.yml@main
+    uses: coinlist/.github/.github/workflows/ruby_on_release.yml@main
     with:
       image: ${{ github.event.repository.name }}
       tag: latest

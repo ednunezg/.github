@@ -1,0 +1,11 @@
+name: Release
+
+on:
+  release: {}
+
+jobs:
+  release:
+    uses: coinlist/.github/.github/workflows/ruby_on_release.yml@main
+    with:
+      image: ${{ github.event.repository.name }}
+      tag: latest
