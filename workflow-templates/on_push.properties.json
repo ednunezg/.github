@@ -1,0 +1,10 @@
+{
+    "name": "CoinList Docker on push",
+    "description": "CoinList Docker on push starter workflow.",
+    "categories": [
+        "Docker"
+    ],
+    "filePatterns": [
+        "^Dockerfile"
+    ]
+}

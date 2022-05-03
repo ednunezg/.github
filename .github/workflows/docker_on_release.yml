@@ -1,4 +1,4 @@
-name: Release
+name: Release Docker project
 
 on:
   workflow_call:
