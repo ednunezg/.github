@@ -1,17 +1,13 @@
-## CoinList reusable workflows 👋
-
-# GitHub Actions
+## CoinList
 
 A collection of GitHub Actions that can be referenced in other GitHub repositories.
-
-## Actions
 
 ### Docker
 
 - [docker_on_push](./.github/workflows/docker_on_push.yml) - Install Docker project and run tests
 - [docker_on_release](./.github/workflows/docker_on_release.yml) - Bump version and deploy Docker project on release
 
-## Usage
+### Usage
 
 Create this files in `<repo_root>/.github/workflows` directory.
 
