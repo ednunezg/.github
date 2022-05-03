@@ -4,7 +4,7 @@ A collection of GitHubActions that can be referenced in other GitHub repositorie
 
 ## Actions
 
-### Ruby
+### Docker
 
 - [docker_on_push](./.github/workflows/docker_on_push.yml) - Install Docker project and run tests
 - [docker_on_release](./.github/workflows/docker_on_release.yml) - Bump version and deploy Docker project on release
