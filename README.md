@@ -1,15 +1,27 @@
-# GitHub Actions
+## GitHub Actions
 
 A collection of GitHubActions that can be referenced in other GitHub repositories.
 
-## Actions
+### Docker projects
 
-### Docker
+#### docker_on_push.yml
 
-- [docker_on_push](./.github/workflows/docker_on_push.yml) - Install Docker project and run tests
-- [docker_on_release](./.github/workflows/docker_on_release.yml) - Bump version and deploy Docker project on release
+[Workflow](./.github/workflows/docker_on_push.yml)
 
-## Usage
+- Triggered on push to any branch
+- Runs tests as `docker compose test`
+- Uses `buildx` for multi-platrom Docker images support
+- Docker layers are cached and stored as artifacts
+
+#### docker_on_release.yml
+
+[Workflow](./.github/workflows/docker_on_release.yml)
+
+- Triggered on publishing a new release from GitHub UI
+- Pushes built Docker image to AWS ECR
+- Secrets: `AWS_ACCESS_KEY`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`
+
+### Usage
 
 Create this files in `<repo_root>/.github/workflows` directory.
 
