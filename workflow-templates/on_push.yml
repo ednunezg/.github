@@ -6,7 +6,7 @@ on:
 
 jobs:
   tests:
-    uses: coinlist/.github/.github/workflows/ruby_on_push.yml@main
+    uses: coinlist/.github/.github/workflows/docker_on_push.yml@main
     with:
       image: ${{ github.event.repository.name }}
       tag: ${{ github.sha }}

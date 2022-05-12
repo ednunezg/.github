@@ -1,0 +1,16 @@
+name: Terraform plan and apply
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'terraform/**'
+  pull_request:
+
+jobs:
+  release:
+    uses: coinlist/.github/.github/workflows/terraform.yml@main
+    with:
+      image: ${{ github.event.repository.name }}
+      tag: latest
