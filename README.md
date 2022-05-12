@@ -46,7 +46,9 @@ jobs:
 name: Release
 
 on:
-  release: {}
+  release:
+    types:
+      - published
 
 jobs:
   release:

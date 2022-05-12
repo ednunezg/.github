@@ -1,0 +1,12 @@
+name: Test
+
+on:
+  push: {}
+  workflow_dispatch: {}
+
+jobs:
+  tests:
+    uses: coinlist/.github/.github/workflows/ruby_on_push.yml@main
+    with:
+      image: ${{ github.event.repository.name }}
+      tag: ${{ github.sha }}
