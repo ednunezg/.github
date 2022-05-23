@@ -1,7 +1,13 @@
 name: Terraform plan
 
 on:
-  workflow_call: {}
+  workflow_call:
+    inputs:
+      terraform-version:
+        description: Terraform version
+        type: string
+        default: "1.1.9"
+        required: false
 
 jobs:
   terraform:
@@ -9,8 +15,6 @@ jobs:
     env:
       TF_VAR_name: common
       TF_VAR_environment: proto
-      TF_VAR_prefect_api_key: ${{ secrets.PREFECT_API_KEY }}
-      TF_VAR_prefect_labels: "['common']"
       TF_VAR_region: us-west-2
     runs-on: ubuntu-latest
     defaults:
@@ -27,7 +31,7 @@ jobs:
         id: setup
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.1.9
+          terraform_version: ${{ inputs.terraform-version }}
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Terraform Init
@@ -45,8 +49,12 @@ jobs:
         run: |
           terraform plan -no-color -input=false -var-file terraform.tfvars
 
+      - uses: jwalton/gh-find-current-pr@v1
+        id: pull-request
+
       - name: Update Pull Request
         id: comment
+        if: steps.pull-request.outputs.number != ""
         uses: actions/github-script@v6
         env:
           PLAN: "${{ steps.plan.outputs.stdout }}"
@@ -66,7 +74,7 @@ jobs:
             ].join("\n");
 
             github.rest.issues.createComment({
-              issue_number: context.issue.number,
+              issue_number: ${{ steps.pull-request.outputs.number }},
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: output

@@ -21,6 +21,22 @@ A collection of GitHubActions that can be referenced in other GitHub repositorie
 - Pushes built Docker image to AWS ECR
 - Secrets: `AWS_ACCESS_KEY`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`
 
+#### terraform_on_push.yml
+
+[Workflow](./.github/workflows/terraform_on_push.yml)
+
+- Triggered on push to any non-`main` branch
+- Runs `terraform plan`
+- Adds a comment with the plan result to the branch Pull Request if there is one
+
+#### terraform_on_push_main.yml
+
+[Workflow](./.github/workflows/terraform_on_push_main.yml)
+
+- Triggered on push to `main` branch
+- Runs `terraform plan`
+- Runs `terraform apply`
+
 ### Usage
 
 Create this files in `<repo_root>/.github/workflows` directory.
