@@ -9,7 +9,7 @@ on:
         default: "1.1.9"
         required: false
     secrets:
-      tf-api-token:
+      TF_API_TOKEN:
         description: Terraform API token
         required: true
 
@@ -36,7 +36,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: ${{ inputs.terraform-version }}
-          cli_config_credentials_token: ${{ secrets.tf-api-token }}
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Terraform Init
         id: init

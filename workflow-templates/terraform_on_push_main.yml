@@ -10,6 +10,6 @@ on:
 jobs:
   release:
     uses: coinlist/.github/.github/workflows/terraform_on_push_main.yml@main
+    secrets: inherit
     with:
       terraform-version: 1.1.9
-      tf-api-token: ${{ secrets.TF_API_TOKEN }}
