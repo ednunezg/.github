@@ -8,6 +8,13 @@ on:
         type: string
         default: "1.1.9"
         required: false
+    secrets:
+      github-token:
+        description: GitHub PAT
+        required: true
+      tf-api-token:
+        description: Terraform API token
+        required: true
 
 jobs:
   terraform:
@@ -32,7 +39,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: ${{ inputs.terraform-version }}
-          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          cli_config_credentials_token: ${{ secrets.tf-api-token }}
 
       - name: Terraform Init
         id: init
@@ -59,7 +66,7 @@ jobs:
         env:
           PLAN: "${{ steps.plan.outputs.stdout }}"
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.github-token }}
           script: |
             const output = [
               "#### Terraform Initialization ⚙️`${{ steps.init.outcome }}`",

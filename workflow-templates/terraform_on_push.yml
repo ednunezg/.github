@@ -12,3 +12,5 @@ jobs:
     uses: coinlist/.github/.github/workflows/terraform_on_push.yml@main
     with:
       terraform-version: 1.1.9
+      github-token: ${{ secrets.GITHUB_TOKEN }}
+      tf-api-token: ${{ secrets.TF_API_TOKEN }}
