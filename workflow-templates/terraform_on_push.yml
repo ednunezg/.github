@@ -11,5 +11,4 @@ jobs:
   release:
     uses: coinlist/.github/.github/workflows/terraform_on_push.yml@main
     with:
-      image: ${{ github.event.repository.name }}
-      tag: latest
+      terraform-version: 1.1.9
