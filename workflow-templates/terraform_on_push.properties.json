@@ -1,0 +1,11 @@
+{
+    "name": "CoinList Terraform",
+    "description": "CoinList Terraform On Push starter workflow.",
+    "categories": [
+        "Terraform",
+        "Docker"
+    ],
+    "filePatterns": [
+        "terraform.tfvars"
+    ]
+}

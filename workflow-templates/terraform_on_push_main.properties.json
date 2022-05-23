@@ -1,6 +1,6 @@
 {
     "name": "CoinList Terraform",
-    "description": "CoinList Terraform starter workflow.",
+    "description": "CoinList Terraform On Push Main starter workflow.",
     "categories": [
         "Terraform",
         "Docker"
